@@ -1,0 +1,16 @@
+
+<div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+<div class="row" *ngIf="strands">
+  <div class="col-sm-3" *ngFor="let strand of strands">
+  <div class="card m-2">
+      <div class="card-header">
+          {{strand.listName}}
+        </div>
+    <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ08_UQPEGmwyv08JGn1C-vxWM_0HCg_HUlXtK94ykTHo16-zcE" alt="Card image cap">
+    <div class="card-body">
+      <a href="#" class="stretched-link" routerLink="/strands/{{strand.id}}/"></a>
+    </div>
+  </div>
+  </div>
+
+</div>

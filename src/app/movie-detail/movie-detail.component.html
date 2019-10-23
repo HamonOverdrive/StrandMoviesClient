@@ -1,0 +1,61 @@
+<div class="card" *ngIf="movie">
+	<div class="row">
+		<aside class="col-sm-5 border-right">
+
+<article class="gallery-wrap">
+<div class="img-big-wrap">
+  <div> <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR3EdS2RMIHAMnMi9PK-be_3Df_ShhnvvbSMItNmoGz4WTMkwrE"></a></div>
+</div>
+
+</article> <!-- gallery-wrap .end// -->
+		</aside>
+		<aside class="col-sm-7">
+        <form [formGroup]="movieAddForm" (ngSubmit)="onSubmit()">
+<article class="card-body p-5">
+	<h3 class="title mb-3">{{movie.title}} ({{movie.year}})</h3>
+
+<p class="price-detail-wrap">
+	<span class="price h3 text-warning">
+		<span class="currency">Rated</span><span class="num"> {{movie.rated}}</span>
+	</span>
+</p> <!-- price-detail-wrap .// -->
+<dl class="item-property">
+  <dt>Description</dt>
+  <dd><p>{{movie.plot}}</p></dd>
+  <dd><small class="text-muted">Director: {{movie.director}}</small></dd>
+  <dd><small class="text-muted">Writer: {{movie.writer}}</small></dd>
+</dl>
+<dl class="param param-feature">
+  <dt>Released:</dt>
+  <dd>{{movie.released}}</dd>
+</dl>  <!-- item-property-hor .// -->
+<dl class="param param-feature">
+  <dt>Metascore:</dt>
+  <dd>{{movie.metascore}}</dd>
+</dl>  <!-- item-property-hor .// -->
+
+<hr>
+	<div class="row">
+		<div class="col-sm-5">
+			<dl class="param param-inline">
+			  <dt>Select WishList to Add To: </dt>
+			  <dd>
+          <select class="form-control form-control-sm" formControlName="wishlist">
+            <option *ngFor="let movieList of movieLists" value={{movieList.id}}>
+              {{movieList.listName}}
+            </option>
+			  	</select>
+			  </dd>
+			</dl>  <!-- item-property .// -->
+		</div> <!-- col.// -->
+	</div> <!-- row.// -->
+	<hr>
+  <button type="submit" class="btn btn-lg btn-outline-primary text-uppercase"> Add to WishList </button>
+      <button type="button" class="btn btn-lg btn-outline-secondary text-uppercase" (click)="goBack()">Back to Search Results</button>
+
+</article> <!-- card-body.// -->
+</form>
+		</aside> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
+

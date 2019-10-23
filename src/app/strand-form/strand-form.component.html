@@ -1,0 +1,23 @@
+<div class="col-md-6 offset-md-3 mt-5">
+  <div class="card shadow p-3 mb-3 bg-white rounded" >
+    <div class="card-body">
+      <h2>Create List</h2>
+      <form [formGroup]="strandForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="listName">List Name</label>
+            <input type="text" formControlName="listName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.listName.errors }" />
+            <div *ngIf="submitted && f.listName.errors" class="invalid-feedback">
+                <div *ngIf="f.listName.errors.required">List Name is Required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Create List
+            </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

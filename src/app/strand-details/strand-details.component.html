@@ -1,0 +1,28 @@
+<div *ngIf="strand">
+      <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand" href="#">{{strand.listName}}</a>
+          <button type="button" class="btn btn-secondary" (click)="goBack()">Back to Strands</button>
+        </nav>
+  <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+  <div class="row" *ngIf="strand.movies">
+  <div class="col-sm-2" *ngFor="let movie of strand.movies">
+    <div class="card m-2">
+      <img class="card-img-top" src="https://previews.123rf.com/images/lukeruk/lukeruk1708/lukeruk170800029/85131412-movie-poster-design-with-film-roll-on-colorful-background-retro-banner-concept-for-movie-festival-vi.jpg" alt="Card image cap">
+      <div class="card-body">
+          {{movie.title}}
+          <div class="row">
+              <div class="col">
+                  <p class="btn btn-danger btn-block" (click)="deleteMovie(movie.id)" >Delete</p>
+                  <ngb-rating [(rate)]="movie.currentRate" (rateChange)="onRateChange($event, movie)"></ngb-rating>
+                  <hr>
+                  <pre>Rate: <b>{{movie.currentRate}}</b></pre>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  </div>
+

@@ -1,0 +1,56 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="#">Strand Movies</a>
+
+  <ul class="nav navbar-nav mr-auto w-80">
+    <li class="text-truncate w-80">
+        <form [formGroup]="searchMoviesCtrl" class="input-group" (ngSubmit)="onSubmit()">
+            <!-- material start -->
+            <div>
+                <mat-form-field style="width: 36rem !important">
+                  <input matInput placeholder="Search movies" aria-label="State" [matAutocomplete]="auto" [formControl]="searchMoviesCtrl" name="searched">
+                  <mat-autocomplete #auto="matAutocomplete" min-search="3">
+                    <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                    <ng-container *ngIf="!isLoading">
+                      <mat-option *ngFor="let movie of filteredMovies" [value]="movie.title">
+                        <span><b>{{movie.title}}</b> ({{movie.year}})</span>
+                      </mat-option>
+                    </ng-container>
+                  </mat-autocomplete>
+                </mat-form-field>
+
+
+
+              <!-- <ng-container *ngIf="errorMsg; else elseTemplate">
+                {{errorMsg}}
+              </ng-container> -->
+              <!-- <ng-template #elseTemplate>
+                <h5>Selected Value: {{searchMoviesCtrl.value}}</h5>
+              </ng-template> -->
+
+              </div>
+              <div class="input-group-btn">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+              </div>
+              <!-- material end -->
+        </form>
+    </li>
+  </ul>
+    <ul class="nav navbar-nav">
+
+      <li class="nav-item">
+          <!--spacer-->
+          &nbsp;
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link" routerLink="/strandform">Create List</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-item nav-link" routerLink="/strands">My Strands</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-item nav-link" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+
+</nav>
